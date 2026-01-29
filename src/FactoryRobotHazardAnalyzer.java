@@ -10,6 +10,12 @@ public class FactoryRobotHazardAnalyzer {
         System.out.print("Enter hazard level (1-10): ");
         int hazardLevel = scanner.nextInt();
 
+        if (hazardLevel < 1 || hazardLevel > 10) {
+            System.out.println("Invalid hazard level");
+            scanner.close();
+            return;
+        }
+
         int riskScore = hazardLevel * 10;
 
         System.out.println("Robot: " + robotName);
