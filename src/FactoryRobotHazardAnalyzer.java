@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 public class FactoryRobotHazardAnalyzer {
 
-    public static int calculateRisk(int hazardLevel) {
+    public static int calculateRisk(int hazardLevel) throws RobotSafetyException {
         if (hazardLevel < 1 || hazardLevel > 10) {
-            System.out.println("Invalid hazard level");
-            return -1;
+            throw new RobotSafetyException("Hazard level must be between 1 and 10");
         }
         return hazardLevel * 10;
     }
@@ -13,22 +12,22 @@ public class FactoryRobotHazardAnalyzer {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter robot name: ");
-        String robotName = scanner.nextLine();
+        try {
+            System.out.print("Enter robot name: ");
+            String robotName = scanner.nextLine();
 
-        System.out.print("Enter hazard level (1-10): ");
-        int hazardLevel = scanner.nextInt();
+            System.out.print("Enter hazard level (1-10): ");
+            int hazardLevel = scanner.nextInt();
 
-        int riskScore = calculateRisk(hazardLevel);
+            int riskScore = calculateRisk(hazardLevel);
 
-        if (riskScore == -1) {
+            System.out.println("Robot: " + robotName);
+            System.out.println("Risk Score: " + riskScore);
+
+        } catch (RobotSafetyException e) {
+            System.out.println("Safety Error: " + e.getMessage());
+        } finally {
             scanner.close();
-            return;
         }
-
-        System.out.println("Robot: " + robotName);
-        System.out.println("Risk Score: " + riskScore);
-
-        scanner.close();
     }
 }
