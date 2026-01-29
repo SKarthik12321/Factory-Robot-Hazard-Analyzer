@@ -7,7 +7,14 @@ public class FactoryRobotHazardAnalyzer {
         System.out.print("Enter robot name: ");
         String robotName = scanner.nextLine();
 
-        System.out.println("Analyzing hazards for robot: " + robotName);
+        System.out.print("Enter hazard level (1-10): ");
+        int hazardLevel = scanner.nextInt();
+
+        int riskScore = hazardLevel * 10;
+
+        System.out.println("Robot: " + robotName);
+        System.out.println("Risk Score: " + riskScore);
+
         scanner.close();
     }
 }
