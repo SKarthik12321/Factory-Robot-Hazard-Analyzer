@@ -9,6 +9,16 @@ public class FactoryRobotHazardAnalyzer {
         return hazardLevel * 10;
     }
 
+    public static String classifyRisk(int hazardLevel) {
+        if (hazardLevel >= 1 && hazardLevel <= 3) {
+            return "LOW";
+        } else if (hazardLevel <= 6) {
+            return "MEDIUM";
+        } else {
+            return "HIGH";
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -20,9 +30,11 @@ public class FactoryRobotHazardAnalyzer {
             int hazardLevel = scanner.nextInt();
 
             int riskScore = calculateRisk(hazardLevel);
+            String riskCategory = classifyRisk(hazardLevel);
 
             System.out.println("Robot: " + robotName);
             System.out.println("Risk Score: " + riskScore);
+            System.out.println("Risk Category: " + riskCategory);
 
         } catch (RobotSafetyException e) {
             System.out.println("Safety Error: " + e.getMessage());
