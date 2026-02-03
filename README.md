@@ -1,1 +1,1 @@
-# Factory-Robot-Hazard-Analyzer
+# Factory Robot Hazard Analyzer
